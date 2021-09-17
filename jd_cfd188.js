@@ -110,7 +110,7 @@ async function cfd() {
         count++;
         for (let i = 0; i < 2; i++) {
           await cashOutQuali();
-          await $.wait(600)
+          await $.wait(800)
         }
       }
     }
