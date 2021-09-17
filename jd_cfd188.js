@@ -108,7 +108,7 @@ async function cfd() {
       nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000)
       if (nowTimes.getMinutes() === 0 && nowTimes.getSeconds() === 0 && nowTimes.getMilliseconds() >= 0) {
         count++;
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 1; i++) {
           await cashOutQuali();
           await $.wait(1000)
         }
