@@ -33,15 +33,15 @@ $.shareCodesArr = [];
     }
 
     let cookiePk = []
-    cookiePk[0] = "pt_key=AAJhcMFXADAuxVRTWBkDCnZNyVQkyRiBzuFM3TfaiT75fkwXIQ3cM9ElfyI9dWiYkYPwoEia5sE;pt_pin=jd_41c107e3616ec;"
+    cookiePk[0] = cookiesArr[0]
     // cookiePk[0] = ""
-    cookiePk[1] = "pt_key=AAJhb5DZADB2GqerluUEz2TbEjGnQU_Qh67Z9PdKyvL-ZJrxHg-als1eavtF2P1SwjXZ8RSHZHI;pt_pin=jd_7cbc61f1d054a;"
+    cookiePk[1] = cookiesArr[1]
     // cookiePk[1] = ""
-    cookiePk[2] = "pt_key=AAJhb5CGADClbQNTNCPMeU3iYPIJzYjBjDr7sw6cU8LHEeXKK91-ceP8e3HF0f_ksx9YXuIDs1k;pt_pin=jd_7cd365c530718;"
-    cookiePk[3] = "pt_key=AAJhb48eADBVpL84ti9Obbk8poohqvFqThzDhkQJD7HeAlXJVy8MrRzxzwcWdnFWMtub-L_9rjA;pt_pin=jd_vfWyQymHSmNA;"
-    cookiePk[4] = "pt_key=AAJhb46yADAuRbpoFGmroW9w1KAAmRLbq7EbcB0TiQHk5oNod5Q29z_YM5_x8rRdi5_BYzVGl7Y;pt_pin=jd_wUkcTSUqAhmr;"
-    cookiePk[5] = "pt_key=AAJhb45KADClRsJfxWWpV_J2BaGTt3gyTUQmsrRvTJEuwRksLUA0dqdho6U4mGmqS1_mBDhpDUw;pt_pin=jd_6db358197e139;"
-    cookiePk[6] = "pt_key=AAJhb44LADBkc4VPY31YphWBQbsILZRvGPvYyNQM1AxWzCZ9VEB6Hbhcz9hfIGGstGyY50tJfLI;pt_pin=jd_448d07b990c2a;"
+    cookiePk[2] = cookiesArr[2]
+    cookiePk[3] = cookiesArr[3]
+    cookiePk[4] = cookiesArr[4]
+    cookiePk[5] = cookiesArr[5]
+    cookiePk[6] = cookiesArr[6]
 
     for (let i = 0; i < cookiePk.length; i++) {
         //查询队伍信息，邀请id，人数
