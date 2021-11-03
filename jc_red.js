@@ -97,7 +97,6 @@ async function run() {
 
 function getCoupons(shareId = '', type = 1) {
     let url= `https://api.m.jd.com/api?functionId=getCoupons&appid=u&_=${Date.now()}&loginType=2&body={%22platform%22:4,%22unionActId%22:%2231134%22,%22actId%22:%22${$.actId}%22,%22d%22:%22${rebateCode}%22,%22unionShareId%22:%22${shareId}%22,%22type%22:${type},%22eid%22:%22${$.eid}%22}&client=apple&clientVersion=8.3.6`
-    url += `&h5st=${decrypt(Date.now(), '', '', url)}&_=${Date.now() + 2}`;
 
     return new Promise(resolve => {
         let opts = {
@@ -107,6 +106,7 @@ function getCoupons(shareId = '', type = 1) {
                 "Accept-Encoding": "gzip, deflate, br",
                 'Cookie': `${cookie} ${newCookie}`,
                 "User-Agent": $.UA,
+                "referer": $.url2,
             }
         }
         $.get(opts, async (err, resp, data) => {
