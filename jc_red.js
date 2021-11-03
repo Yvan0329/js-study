@@ -2,7 +2,7 @@
 双十一无门槛红包🧧
 ck1助力 作者
 其余助力ck1
-https://u.jd.com/yIDzgtC
+https://u.jd.com/yK3v2IE
 跳转到app 可查看助力情况
 cron 0 0,12,18 * * * gua_1111RedEnvelope.js
 */
@@ -24,7 +24,7 @@ if ($.isNode()) {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 
-rebateCode = 'yIDzgtC'
+rebateCode = 'yK3v2IE'
 message = ''
 newCookie = ''
 resMsg = ''
@@ -177,7 +177,7 @@ function shareUnionCoupon() {
                     let res = $.toObj(data, data);
                     if (typeof res == 'object') {
                         if (res.code == 0 && res.data && res.data.shareUrl) {
-                            $.shareCode = res.data.shareUrl.match(/yIDzgtC\?s=([^&]+)/) && res.data.shareUrl.match(/yIDzgtC\?s=([^&]+)/)[1] || ''
+                            $.shareCode = res.data.shareUrl.match(/yK3v2IE\?s=([^&]+)/) && res.data.shareUrl.match(/yK3v2IE\?s=([^&]+)/)[1] || 'yK3v2IE'
                             console.log('分享码:' + $.shareCode)
                             if ($.shareCode) console.log(`以下账号会助力【京东账号${$.index}】${$.nickName || $.UserName}`)
                         }
