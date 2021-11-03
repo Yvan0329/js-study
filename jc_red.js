@@ -96,7 +96,8 @@ async function run() {
 }
 
 function getCoupons(shareId = '', type = 1) {
-    let url= `https://api.m.jd.com/api?functionId=getCoupons&appid=u&_=${Date.now()}&loginType=2&body={%22platform%22:4,%22unionActId%22:%2231134%22,%22actId%22:%22${$.actId}%22,%22d%22:%22${rebateCode}%22,%22unionShareId%22:%22${shareId}%22,%22type%22:${type},%22eid%22:%22${$.eid}%22}&client=apple&clientVersion=8.3.6`
+    let url= `https://api.m.jd.com/api?functionId=getCoupons&appid=u&_=${Date.now()}&loginType=2&body={%22platform%22:2,%22unionActId%22:%2231134%22,%22actId%22:%22${$.actId}%22,%22d%22:%22${rebateCode}%22,%22unionShareId%22:%22${shareId}%22,%22type%22:${type},%22eid%22:%22${$.eid}%22}&client=apple&clientVersion=8.3.6`
+    url += `&h5st=${decrypt(Date.now(), '', '', url)}`;
 
     return new Promise(resolve => {
         let opts = {
@@ -231,13 +232,14 @@ function getUrl() {
         }
         $.get(options, async (err, resp, data) => {
             try {
-                newCookie += " deviceName=Safari; deviceOS=ios; deviceOSVersion=15.1; deviceVersion=604.1;"
-                newCookie += " mba_muid=1447423713;"
-                newCookie += " mba_sid=16359050140249425095654128562.3;"
-                newCookie += " shshshfp=4b2a83960034dc4a78c63f91b0ccde3d;"
-                newCookie += " shshshfpa=49260240-80b1-6488-9713-c00ab7f5e627-1634821968;"
-                newCookie += " shshshfpb=yRhjbDbLkCyz8FDhHxOuqXQ%3D%3D;"
-                newCookie += " sc_width=390;"
+                newCookie += " __jd_ref_cls=Babel_H5FirstClick;"
+                newCookie += " mba_muid=1635910585840773499156;"
+                newCookie += " mba_sid=16359110811036329294588631174.16;"
+                newCookie += " __jdc=123;"
+                newCookie += " shshshfpb=vBn0D24l9zfP%20aYFrBIes1w%3D%3D;"
+                newCookie += " shshshfp=460328b6eb397751a2c73e9def84b841;"
+                newCookie += " shshshfpa=219184fa-73a5-1c22-4ccd-97dac8c1ffd6-1635911086;"
+                newCookie += " shshshsID=6d45cd1d82db9696a4edf7add5e15c17_6_1635911235675;"
                 newCookie += " pwdt_id=" + cookie.split("pt_pin=")[1]
                 setActivityCookie(resp)
                 $.url1 = data.match(/(https:\/\/u\.jd\.com\/jda[^']+)/) && data.match(/(https:\/\/u\.jd\.com\/jda[^']+)/)[1] || ''
