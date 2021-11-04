@@ -7,7 +7,7 @@
 # export kois=" 第1个cookie的pin & 第2个cookie的pin "
 # 11/4 11:23 增加自动开红包
 '''
-cron: 15 2 * * * jd_angryKoi.py
+cron: 15 2 * * * jd_angryKoi2.py
 new Env('锦鲤红包助力');
 '''
 
@@ -19,7 +19,7 @@ try:
     import aiohttp
 except Exception as e:
     print(e, "\n缺少aiohttp 模块，请执行命令 pip3 install --upgrade pip\n缺少aiohttp 模块，请执行命令安装: pip3 install aiohttp\n")
-    exit(3) 
+    exit(3)
 try:
     import requests
 except Exception as e:
@@ -94,7 +94,7 @@ class Judge_env(object):
         else:
             cookie_list=os.environ["JD_COOKIE"].split('&')       # 获取cookie_list的合集
         if len(cookie_list)<1:
-            print('请填写环境变量JD_COOKIE\n')    
+            print('请填写环境变量JD_COOKIE\n')
         return cookie_list
 
     def v4_cookie(self):
@@ -151,7 +151,7 @@ class Msg(object):
                 return self.main(n)
             else:
                 print('获取通知服务失败，请检查网络连接...')
-Msg().main()   # 初始化通知服务   
+Msg().main()   # 初始化通知服务
 
 # 异步检查账号有效性
 nickname_findall=re.compile(r'"nickname":"(.+?)"')
@@ -173,7 +173,7 @@ async def getUserInfo_list(cookie_list):
         }
         try:
             async with session.get(url, headers=headers, timeout=60) as res:
-                res =await res.text()        
+                res =await res.text()
             if '"retcode":"0"' in res:
                 if nickname := nickname_findall.findall(res):  # 账号名
                     cookie_ok_list.append(cookie)
@@ -211,7 +211,7 @@ async def taskPostUrl(functionId, body, cookie):
                 return res
         except:
             if n==2:
-                msg('API请求失败，请检查网路重试❗\n')  
+                msg('API请求失败，请检查网路重试❗\n')
 
 # 开启助力
 code_findall=re.compile(r'"code":(.*?),')
@@ -317,7 +317,7 @@ def main():
     msg(f'====================共{len(cookie_list)}京东个账号Cookie=========\n')
 
     asyncio.run(asyncmain())
-    
+
     if run_send=='yes':
         send('愤怒的锦鲤')   # 通知服务
 
