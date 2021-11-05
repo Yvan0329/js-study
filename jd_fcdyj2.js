@@ -41,7 +41,7 @@ const JD_API_HOST = `https://api.m.jd.com`;
     $.needhelp = true
     $.canDraw = false
     $.canHelp = true;
-    $.linkid = "yMVR-_QKRd2Mq27xguJG-w"
+    $.linkid = "PFbUR7wtwUcQ860Sn8WRfw"
     //开包 查询
     for (let i = openred-1; i < openred; i++) {
         cookie = cookiesArr[i];
@@ -141,6 +141,7 @@ function getinfo() {
                     console.log(`${JSON.stringify(err)}`);
                     console.log(`${$.name} API请求失败，请检查网路重试`);
                 } else {
+                    console.log(data)
                     data = JSON.parse(data);
                     console.log(data.data.state)
                     if (data.data.state !== 0) {
@@ -232,8 +233,8 @@ function getid() {
                     console.log(`${JSON.stringify(err)}`);
                     console.log(`${$.name} API请求失败，请检查网路重试`);
                 } else {
+                    console.log(data)
                     data = JSON.parse(data);
-                    console.log(data.data.state)
                     if (data.success && data.data) {
                         if (data.data.state === 3) {
                             console.log("今日已成功兑换")
@@ -352,7 +353,7 @@ function getauthorid() {
 
 function taskUrl(function_id, body) {
     return {
-        url: `${JD_API_HOST}/?functionId=${function_id}&body=${encodeURIComponent(body)}&t=${Date.now()}&appid=activities_platform&clientVersion=3.5.2`,
+        url: `${JD_API_HOST}/?functionId=${function_id}&body=${encodeURIComponent(body)}&t=${Date.now()}&appid=activities_platform&clientVersion=1.0.0&client=H5`,
         headers: {
             "Accept": "*/*",
             "Accept-Encoding": "gzip, deflate, br",
