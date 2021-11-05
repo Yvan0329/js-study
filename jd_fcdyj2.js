@@ -352,8 +352,10 @@ function getauthorid() {
 
 
 function taskUrl(function_id, body) {
+    let url = `${JD_API_HOST}/?functionId=${function_id}&body=${encodeURIComponent(body)}&t=${Date.now()}&appid=activities_platform&clientVersion=1.0.0&client=H5`;
+    url += `&h5st=${decrypt(Date.now(), '', '', url)}`
     return {
-        url: `${JD_API_HOST}/?functionId=${function_id}&body=${encodeURIComponent(body)}&t=${Date.now()}&appid=activities_platform&clientVersion=1.0.0&client=H5`,
+        url: url,
         headers: {
             "Accept": "*/*",
             "Accept-Encoding": "gzip, deflate, br",
