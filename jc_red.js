@@ -4,7 +4,7 @@ cron 0 0,12,18 * * *  https://raw.githubusercontent.com/smiek2121/scripts/master
 整点跑 红包几率大点
 ck1助力 作者
 其余助力ck1
-https://u.jd.com/ydWktEj
+https://u.jd.com/ywNq9yx
 跳转到app 可查看助力情况
 返利变量：gua_redEnvelope_rebateCode，默认给脚本作者返利，若需要返利给自己，请自己修改返利变量gua_redEnvelope_rebateCode
 例：gua_redEnvelope_rebateCode="你的返利code"
@@ -29,7 +29,7 @@ if ($.isNode()) {
 }
 rebateCodes = $.isNode() ? (process.env.gua_redEnvelope_rebateCode ? process.env.gua_redEnvelope_rebateCode : `${rebateCodes}`) : ($.getdata('gua_redEnvelope_rebateCode') ? $.getdata('gua_redEnvelope_rebateCode') : `${rebateCodes}`);
 
-rebateCode = 'ydWktEj'
+rebateCode = 'ywNq9yx'
 message = ''
 newCookie = ''
 resMsg = ''
