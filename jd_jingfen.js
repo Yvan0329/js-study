@@ -41,6 +41,7 @@ if ($.isNode()) {
             headers: {
                 cookie: cookie
             },
+            // accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
             agent: {
                 https: new tunnel.httpsOverHttp({
                     proxy: {
@@ -49,6 +50,7 @@ if ($.isNode()) {
                     }
                 })
             },
+            // userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
             timeout: {
                 request: 10000
             }
@@ -130,7 +132,7 @@ async function getUrls(options) {
     catch (e) {
         console.log('请求失败：' + e)
     }
-
+    console.log(data)
     //console.log("判断卡住节点4：" + data)
     const pattern = /skuItemUrl":"(.*?)\?/g
     const items = data.matchAll(pattern)
@@ -151,10 +153,10 @@ async function getUrls(options) {
 
 // 将提取的购物车列表进行转链
 async function changeLinks(urls) {
-    const appKey = 'c7b016073c4d96ace3a288e22c1b8eb0'
-    const appSecret = 'f9a6e25e3a5047f68e515a8a714d6b8b'
-    const unionId = 2011720560  // 联盟id
-    const positionId = 3004093349  // 推广位id
+    const appKey = '789BEBA17318111A67A88E980BC94850'
+    const appSecret = '055CC073F21C702E29A8B146AD6EDA669D2A292C9683FB09FCFAD081A232683A'
+    const unionId = 1001124881  // 联盟id
+    const positionId = 3004098357  // 推广位id
     let timestamp = (new Date()).valueOf()
     let copywriting = ''  // 待转链文案，此处仅需要原商品链接即可
     const version = 'v1'  // 版本，建议v1
@@ -169,31 +171,19 @@ async function changeLinks(urls) {
     // console.log(urls)
     let finalUrls = []
     for (let url of urls) {
-        // console.log("当前访问商品:" + url)
-        let sign = makeSign(url)
-        // console.log(sign)
+        console.log("当前访问商品:" + url)
 
-        let params = {
-            "appKey": appKey,
-            "timestamp": timestamp,
-            "sign": sign,
-            "copywriting": url,
-            "unionId": unionId,
-            "positionId": positionId,
-            "version": version
-        }
+        var url1 = "https://api.jingpinku.com/get_rebate_link/api?appid=2110271626103934&appkey=OW9DpqQFiXlNxpykiJFh7BRs0gwfRYbJ&union_id=1001124881&content=" + url
 
-        const {data} = await got.post('https://www.dgrlm.com/qcypopen/open/v1/qcSmartChain', {
-            json: params,
-            timeout: {
-                request: 10000
-            }
-        }).json();
+        console.log(url1)
+
+        var data = await got.get(url1).json()
+
         console.log('返回接口',data)  // 返回接口结果
         await $.wait(parseInt(Math.random() * 500, 10))
         try {
-            finalUrls.push(data.skuInfos[0].skuUrl)
-            console.log('购物车商品名称:' + data.skuInfos[0].skuName)
+            finalUrls.push(data.content)
+            console.log('购物车商品名称:' + data.official)
         }
         catch(err){
             console.log('当前商品不在推广中')
@@ -216,7 +206,7 @@ async function getIp() {
     console.log(myIp)
 
     //添加白名单，后台复制地址
-    var baseBai = ""
+    var baseBai = "https://wapi.http.linkudp.com/index/index/save_white?neek=591347&appkey=003f660ce37c35bfe37423ba72597969&white="
     const addBai = baseBai + myIp
     await got.get(addBai,{
         timeout: {
@@ -276,8 +266,13 @@ async function browse(urls, cks, proxyIp) {
             await page.setCookie(...cookies);  // 注入cookie
             await page.goto(url);  // 打开锁佣页面
             await page.waitForTimeout(sleepTime) // 等待1-3s
+            // console.log(page)
+            // await page.click('#addCart2'); //然后点击
+            // await page.waitForTimeout(sleepTime) // 等待1-3s
+            // await page.click('#popupConfirm'); //然后点击
         }
         catch(err) {
+            console.log(err)
             console.log("当前链接访问失败，为避免浪费ip，直接进行下一商品访问！")
         }
 
